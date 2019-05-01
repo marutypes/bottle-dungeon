@@ -44,7 +44,9 @@ defmodule BottleDungeon.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:comeonin, "~> 4.1"},
-      {:pbkdf2_elixir, "~> 0.12"}
+      {:pbkdf2_elixir, "~> 0.12"},
+      {:earmark, "~> 1.3.2"},
+      {:phoenix_html_sanitizer, "~> 1.0.0"}
     ]
   end
 

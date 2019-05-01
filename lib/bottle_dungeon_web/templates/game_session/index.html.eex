@@ -4,7 +4,6 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>Description</th>
 
       <th></th>
     </tr>
@@ -13,7 +12,6 @@
     <%= for game_session <- @game_sessions do %>
         <tr>
           <td><%= game_session.title %></td>
-          <td><%= game_session.description %></td>
 
           <td>
             <%= link "Show", to: Routes.game_session_path(@conn, :show, game_session) %>

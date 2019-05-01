@@ -1,4 +1,4 @@
 <section class="phx-hero">
-  <h1><%= gettext "Welcome to %{name}!", name: "BottleDungeon.online" %></h1>
+  <h1><%= gettext "Welcome to %{name}!", name: "BottleDungeon" %></h1>
   <p>Get ready to delve.</p>
 </section>
