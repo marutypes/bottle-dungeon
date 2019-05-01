@@ -16,6 +16,9 @@ defmodule BottleDungeonWeb.Router do
   scope "/", BottleDungeonWeb do
     pipe_through :browser
 
+    get "/users", UserController, :index
+    get "/users/:id", UserController, :show
+
     get "/", PageController, :index
   end
 
