@@ -1,0 +1,18 @@
+<h1>Show Game session</h1>
+
+<ul>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @game_session.title %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @game_session.description %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.game_session_path(@conn, :edit, @game_session) %></span>
+<span><%= link "Back", to: Routes.game_session_path(@conn, :index) %></span>

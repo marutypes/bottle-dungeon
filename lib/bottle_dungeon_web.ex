@@ -23,6 +23,7 @@ defmodule BottleDungeonWeb do
 
       import Plug.Conn
       import BottleDungeonWeb.Gettext
+      import BottleDungeonWeb.Auth, only: [authenticate_user: 2]
       alias BottleDungeonWeb.Router.Helpers, as: Routes
     end
   end
@@ -50,6 +51,7 @@ defmodule BottleDungeonWeb do
       use Phoenix.Router
       import Plug.Conn
       import Phoenix.Controller
+      import BottleDungeonWeb.Auth, only: [authenticate_user: 2]
     end
   end
 

@@ -7,6 +7,7 @@ defmodule BottleDungeon.Accounts.User do
   schema "users" do
     field :username, :string
     has_one :credential, Credential
+    has_many :game_sessions, GameSession
 
     timestamps()
   end

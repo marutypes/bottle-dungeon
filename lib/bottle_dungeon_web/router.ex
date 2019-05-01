@@ -23,6 +23,12 @@ defmodule BottleDungeonWeb.Router do
     get "/", PageController, :index
   end
 
+  scope "/manage", BottleDungeonWeb do
+    pipe_through [:browser, :authenticate_user]
+
+    resources "/games", GameSessionController
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", BottleDungeonWeb do
   #   pipe_through :api
