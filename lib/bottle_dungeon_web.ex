@@ -30,7 +30,7 @@ defmodule BottleDungeonWeb do
   def view do
     quote do
       use Phoenix.View,
-        root: "lib/bottle_dungeon_ssr_web/templates",
+        root: "lib/bottle_dungeon_web/templates",
         namespace: BottleDungeonWeb
 
       # Import convenience functions from controllers
