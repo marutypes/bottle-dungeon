@@ -3,6 +3,7 @@ defmodule BottleDungeon.Accounts.User do
   import Ecto.Changeset
 
   alias BottleDungeon.Accounts.Credential
+  alias BottleDungeon.Game.GameSession
 
   schema "users" do
     field :username, :string
@@ -23,5 +24,6 @@ defmodule BottleDungeon.Accounts.User do
     |> cast(attrs, [:username])
     |> validate_required([:username])
     |> validate_length(:username, min: 1, max: 20)
+    |> unique_constraint(:username)
   end
 end
