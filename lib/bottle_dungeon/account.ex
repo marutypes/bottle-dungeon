@@ -157,7 +157,7 @@ defmodule BottleDungeon.Accounts do
 
       true ->
         Comeonin.Pbkdf2.dummy_checkpw()
-        {:error, :not_found}
+        {:error, :unauthorized}
     end
   end
 end

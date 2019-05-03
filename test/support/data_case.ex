@@ -22,6 +22,7 @@ defmodule BottleDungeon.DataCase do
       import Ecto.Changeset
       import Ecto.Query
       import BottleDungeon.DataCase
+      import BottleDungeon.TestHelpers
     end
   end
 
