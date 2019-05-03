@@ -1,4 +1,4 @@
-defmodule BottleDungeon.AccountsTest do
+defmodule BottleDungeon.AccountTest do
   use BottleDungeon.DataCase
 
   alias BottleDungeon.Accounts
