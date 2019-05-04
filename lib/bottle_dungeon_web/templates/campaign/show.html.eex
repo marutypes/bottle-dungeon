@@ -6,5 +6,6 @@
   <%= markdown(@campaign.description) %>
 </article>
 
+<span><%= link "Play", to: Routes.play_path(@conn, :show, @campaign) %></span>
 <span><%= link "Edit", to: Routes.campaign_path(@conn, :edit, @campaign) %></span>
 <span><%= link "Back", to: Routes.campaign_path(@conn, :index) %></span>

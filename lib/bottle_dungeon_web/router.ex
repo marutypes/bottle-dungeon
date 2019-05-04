@@ -20,6 +20,7 @@ defmodule BottleDungeonWeb.Router do
     resources "/users", UserController, only: [:index, :show, :new, :create]
     resources "/sessions", SessionController, only: [:new, :create, :delete]
 
+    get "/play/:id", PlayController, :show
     get "/", PageController, :index
   end
 
