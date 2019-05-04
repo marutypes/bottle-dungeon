@@ -1,4 +1,4 @@
-defmodule BottleDungeonWeb.GameSessionView do
+defmodule BottleDungeonWeb.CampaignView do
   use BottleDungeonWeb, :view
   use PhoenixHtmlSanitizer, :basic_html
 

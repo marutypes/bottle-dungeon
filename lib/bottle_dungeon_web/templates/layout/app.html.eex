@@ -15,7 +15,7 @@
             <%= if @current_user do %>
               <li>
                 <%= link "My Games",
-                    to: Routes.game_session_path(@conn, :index) %>
+                    to: Routes.campaign_path(@conn, :index) %>
                 <%= link "Log out",
                     to: Routes.session_path(@conn, :delete, @current_user),
                     method: "delete" %>

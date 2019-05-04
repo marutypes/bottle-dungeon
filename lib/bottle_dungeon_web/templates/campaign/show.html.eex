@@ -1,0 +1,10 @@
+<h1>
+  <%= @campaign.title %>
+</h1>
+
+<article>
+  <%= markdown(@campaign.description) %>
+</article>
+
+<span><%= link "Edit", to: Routes.campaign_path(@conn, :edit, @campaign) %></span>
+<span><%= link "Back", to: Routes.campaign_path(@conn, :index) %></span>

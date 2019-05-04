@@ -21,18 +21,18 @@ defmodule BottleDungeon.TestHelpers do
       user
   end
 
-  def game_session_fixture(%Accounts.User{} = user, attrs \\ %{}) do
+  def campaign_fixture(%Accounts.User{} = user, attrs \\ %{}) do
     attrs =
       Enum.into(attrs, %{
         title: "A title",
         description: "a description"
       })
 
-    {:ok, game} = Game.create_game_session(user, attrs)
+    {:ok, game} = Game.create_campaign(user, attrs)
     game
   end
 
-  def game_session_count() do
-    Game.count_game_sessions()
+  def campaign_count() do
+    Game.count_campaigns()
   end
 end

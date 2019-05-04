@@ -3,12 +3,12 @@ defmodule BottleDungeon.Accounts.User do
   import Ecto.Changeset
 
   alias BottleDungeon.Accounts.Credential
-  alias BottleDungeon.Game.GameSession
+  alias BottleDungeon.Game.Campaign
 
   schema "users" do
     field :username, :string
     has_one :credential, Credential
-    has_many :game_sessions, GameSession
+    has_many :campaigns, Campaign
 
     timestamps()
   end

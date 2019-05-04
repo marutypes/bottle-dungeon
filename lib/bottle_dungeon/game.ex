@@ -6,122 +6,122 @@ defmodule BottleDungeon.Game do
   import Ecto.Query, warn: false
   alias BottleDungeon.Repo
   alias BottleDungeon.Accounts
-  alias BottleDungeon.Game.GameSession
+  alias BottleDungeon.Game.Campaign
 
   @doc """
-  Returns the list of game_sessions.
+  Returns the list of campaigns.
 
   ## Examples
 
-      iex> list_game_sessions()
-      [%GameSession{}, ...]
+      iex> list_campaigns()
+      [%Campaign{}, ...]
 
   """
-  def list_game_sessions do
-    Repo.all(GameSession)
+  def list_campaigns do
+    Repo.all(Campaign)
   end
 
-  def list_user_game_sessions(%Accounts.User{} = user) do
-    GameSession
-    |> user_game_sessions_query(user)
+  def list_user_campaigns(%Accounts.User{} = user) do
+    Campaign
+    |> user_campaigns_query(user)
     |> Repo.all()
   end
 
-  def get_user_game_session(%Accounts.User{} = user, id) do
-    from(gs in GameSession, where: gs.id == ^id)
-    |> user_game_sessions_query(user)
+  def get_user_campaign(%Accounts.User{} = user, id) do
+    from(gs in Campaign, where: gs.id == ^id)
+    |> user_campaigns_query(user)
     |> Repo.one()
   end
 
-  defp user_game_sessions_query(query, %Accounts.User{id: user_id}) do
+  defp user_campaigns_query(query, %Accounts.User{id: user_id}) do
     from(gs in query, where: gs.user_id == ^user_id)
   end
 
   @doc """
-  Gets a single game_session.
+  Gets a single campaign.
 
   Raises `Ecto.NoResultsError` if the Game session does not exist.
 
   ## Examples
 
-      iex> get_game_session!(123)
-      %GameSession{}
+      iex> get_campaign!(123)
+      %Campaign{}
 
-      iex> get_game_session!(456)
+      iex> get_campaign!(456)
       ** (Ecto.NoResultsError)
 
   """
-  def get_game_session!(id), do: Repo.get!(GameSession, id)
+  def get_campaign!(id), do: Repo.get!(Campaign, id)
 
   @doc """
-  Creates a game_session.
+  Creates a campaign.
 
   ## Examples
 
-      iex> create_game_session(%Accounts.User{}, %{field: value})
-      {:ok, %GameSession{}}
+      iex> create_campaign(%Accounts.User{}, %{field: value})
+      {:ok, %Campaign{}}
 
-      iex> create_game_session(%{field: bad_value})
+      iex> create_campaign(%{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_game_session(%Accounts.User{} = user, attrs \\ %{}) do
-    %GameSession{}
-    |> GameSession.changeset(attrs)
+  def create_campaign(%Accounts.User{} = user, attrs \\ %{}) do
+    %Campaign{}
+    |> Campaign.changeset(attrs)
     |> put_user(user)
     |> Repo.insert()
   end
 
   @doc """
-  Updates a game_session.
+  Updates a campaign.
 
   ## Examples
 
-      iex> update_game_session(game_session, %{field: new_value})
-      {:ok, %GameSession{}}
+      iex> update_campaign(campaign, %{field: new_value})
+      {:ok, %Campaign{}}
 
-      iex> update_game_session(game_session, %{field: bad_value})
+      iex> update_campaign(campaign, %{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
-  def update_game_session(%GameSession{} = game_session, attrs) do
-    game_session
-    |> GameSession.changeset(attrs)
+  def update_campaign(%Campaign{} = campaign, attrs) do
+    campaign
+    |> Campaign.changeset(attrs)
     |> Repo.update()
   end
 
   @doc """
-  Deletes a GameSession.
+  Deletes a Campaign.
 
   ## Examples
 
-      iex> delete_game_session(game_session)
-      {:ok, %GameSession{}}
+      iex> delete_campaign(campaign)
+      {:ok, %Campaign{}}
 
-      iex> delete_game_session(game_session)
+      iex> delete_campaign(campaign)
       {:error, %Ecto.Changeset{}}
 
   """
-  def delete_game_session(%GameSession{} = game_session) do
-    Repo.delete(game_session)
+  def delete_campaign(%Campaign{} = campaign) do
+    Repo.delete(campaign)
   end
 
   @doc """
-  Returns an `%Ecto.Changeset{}` for tracking game_session changes.
+  Returns an `%Ecto.Changeset{}` for tracking campaign changes.
 
   ## Examples
 
-      iex> change_game_session(game_session)
-      %Ecto.Changeset{source: %GameSession{}}
+      iex> change_campaign(campaign)
+      %Ecto.Changeset{source: %Campaign{}}
 
   """
-  def change_game_session(%GameSession{} = game_session \\ %GameSession{}) do
-    game_session
-    |> GameSession.changeset(%{})
+  def change_campaign(%Campaign{} = campaign \\ %Campaign{}) do
+    campaign
+    |> Campaign.changeset(%{})
   end
 
-  def count_game_sessions() do
-    from(p in "game_sessions", select: count(p.id))
+  def count_campaigns() do
+    from(p in "campaigns", select: count(p.id))
     |> Repo.one
   end
 
@@ -129,7 +129,7 @@ defmodule BottleDungeon.Game do
     Ecto.Changeset.put_assoc(changeset, :user, user)
   end
 
-  defp preload_user(game_session_or_sessions) do
-    Repo.preload(game_session_or_sessions, :user)
+  defp preload_user(campaign_or_sessions) do
+    Repo.preload(campaign_or_sessions, :user)
   end
 end

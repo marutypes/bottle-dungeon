@@ -1,8 +1,8 @@
-defmodule BottleDungeon.Game.GameSession do
+defmodule BottleDungeon.Game.Campaign do
   use Ecto.Schema
   import Ecto.Changeset
 
-  schema "game_sessions" do
+  schema "campaigns" do
     field :description, :string
     field :title, :string
     belongs_to :user, BottleDungeon.Accounts.User
@@ -11,8 +11,8 @@ defmodule BottleDungeon.Game.GameSession do
   end
 
   @doc false
-  def changeset(game_session, attrs) do
-    game_session
+  def changeset(campaign, attrs) do
+    campaign
     |> cast(attrs, [:title, :description])
     |> validate_required([:title, :description])
   end

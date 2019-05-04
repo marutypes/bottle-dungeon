@@ -1,20 +1,20 @@
-defmodule BottleDungeonWeb.GameSessionViewTest do
+defmodule BottleDungeonWeb.CampaignViewTest do
   use BottleDungeonWeb.ConnCase, async: true
   import Phoenix.View
 
-  alias BottleDungeon.Game.GameSession
+  alias BottleDungeon.Game.Campaign
   alias BottleDungeon.Accounts.User
 
   test "renders index.html", %{conn: conn} do
     games = [
-      %GameSession{id: 1, title: "CounterWeight"},
-      %GameSession{id: 2, title: "Marielda"}
+      %Campaign{id: 1, title: "CounterWeight"},
+      %Campaign{id: 2, title: "Marielda"}
     ]
 
     content =
-      render_to_string(BottleDungeonWeb.GameSessionView, "index.html",
+      render_to_string(BottleDungeonWeb.CampaignView, "index.html",
         conn: conn,
-        game_sessions: games
+        campaigns: games
       )
 
     assert String.contains?(content, "My Games")
@@ -26,10 +26,10 @@ defmodule BottleDungeonWeb.GameSessionViewTest do
 
   test "renders new.html", %{conn: conn} do
     owner = %User{}
-    changeset = BottleDungeon.Game.change_game_session(%GameSession{})
+    changeset = BottleDungeon.Game.change_campaign(%Campaign{})
 
     content =
-      render_to_string(BottleDungeonWeb.GameSessionView, "new.html",
+      render_to_string(BottleDungeonWeb.CampaignView, "new.html",
         conn: conn,
         changeset: changeset
       )

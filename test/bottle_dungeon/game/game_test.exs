@@ -3,68 +3,68 @@ defmodule BottleDungeon.GameTest do
 
   alias BottleDungeon.Game
 
-  describe "game_sessions" do
-    alias BottleDungeon.Game.GameSession
+  describe "campaigns" do
+    alias BottleDungeon.Game.Campaign
 
     @valid_attrs %{description: "desc", title: "title"}
     @invalid_attrs %{description: nil, title: nil}
 
-    test "list_game_sessions/0 returns all the game_sessions" do
+    test "list_campaigns/0 returns all the campaigns" do
       owner = user_fixture()
-      %GameSession{id: id1} = game_session_fixture(owner)
+      %Campaign{id: id1} = campaign_fixture(owner)
 
-      assert [%GameSession{id: ^id1}] = Game.list_game_sessions()
-      %GameSession{id: id2} = game_session_fixture(owner)
-      assert [%GameSession{id: ^id1}, %GameSession{id: ^id2}] = Game.list_game_sessions()
+      assert [%Campaign{id: ^id1}] = Game.list_campaigns()
+      %Campaign{id: id2} = campaign_fixture(owner)
+      assert [%Campaign{id: ^id1}, %Campaign{id: ^id2}] = Game.list_campaigns()
     end
 
-    test "get_game_session!/1" do
+    test "get_campaign!/1" do
       owner = user_fixture()
-      %GameSession{id: id} = game_session_fixture(owner)
+      %Campaign{id: id} = campaign_fixture(owner)
 
-      assert %GameSession{id: ^id} = Game.get_game_session!(id)
+      assert %Campaign{id: ^id} = Game.get_campaign!(id)
     end
 
-    test "create_game_session/2 with valid data creates a game_session" do
+    test "create_campaign/2 with valid data creates a campaign" do
       owner = user_fixture()
 
-      assert {:ok, %GameSession{} = game_session} = Game.create_game_session(owner, @valid_attrs)
+      assert {:ok, %Campaign{} = campaign} = Game.create_campaign(owner, @valid_attrs)
     end
 
-    test "create_game_session/2 with invalid data returns error changeset" do
+    test "create_campaign/2 with invalid data returns error changeset" do
       owner = user_fixture()
 
-      assert {:error, %Ecto.Changeset{}} = Game.create_game_session(owner, @invalid_attrs)
+      assert {:error, %Ecto.Changeset{}} = Game.create_campaign(owner, @invalid_attrs)
     end
 
-    test "update_game_session/2 with valid data updates the game_session" do
+    test "update_campaign/2 with valid data updates the campaign" do
       owner = user_fixture()
-      game_session = game_session_fixture(owner)
+      campaign = campaign_fixture(owner)
 
-      assert {:ok, game} = Game.update_game_session(game_session, %{title: "an updated title"})
-      assert %GameSession{} = game
+      assert {:ok, game} = Game.update_campaign(campaign, %{title: "an updated title"})
+      assert %Campaign{} = game
       assert game.title == "an updated title"
     end
 
-    test "update_game_session/2 with invalid data returns error changeset" do
+    test "update_campaign/2 with invalid data returns error changeset" do
       owner = user_fixture()
-      %GameSession{id: id} = game = game_session_fixture(owner)
+      %Campaign{id: id} = game = campaign_fixture(owner)
 
-      assert {:error, %Ecto.Changeset{}} = Game.update_game_session(game, @invalid_attrs)
-      assert %GameSession{id: ^id} = Game.get_game_session!(id)
+      assert {:error, %Ecto.Changeset{}} = Game.update_campaign(game, @invalid_attrs)
+      assert %Campaign{id: ^id} = Game.get_campaign!(id)
     end
 
-    test "delete_game_session/1 deletes the game_session" do
+    test "delete_campaign/1 deletes the campaign" do
       owner = user_fixture()
-      game = game_session_fixture(owner)
-      assert {:ok, %GameSession{}} = Game.delete_game_session(game)
-      assert Game.list_game_sessions() == []
+      game = campaign_fixture(owner)
+      assert {:ok, %Campaign{}} = Game.delete_campaign(game)
+      assert Game.list_campaigns() == []
     end
 
-    test "change_game_session/1 returns a game_session changeset" do
+    test "change_campaign/1 returns a campaign changeset" do
       owner = user_fixture()
-      game = game_session_fixture(owner)
-      assert %Ecto.Changeset{} = Game.change_game_session(game)
+      game = campaign_fixture(owner)
+      assert %Ecto.Changeset{} = Game.change_campaign(game)
     end
   end
 end
