@@ -16,3 +16,6 @@ config :bottle_dungeon, BottleDungeon.Repo,
   database: "bottle_dungeon_ssr_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
+
+# Intentionally speed up hashing in tests
+config :pbkdf2_elixir, :rounds, 1
