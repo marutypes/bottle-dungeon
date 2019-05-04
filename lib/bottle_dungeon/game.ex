@@ -27,10 +27,10 @@ defmodule BottleDungeon.Game do
     |> Repo.all()
   end
 
-  def get_user_game_session!(%Accounts.User{} = user, id) do
+  def get_user_game_session(%Accounts.User{} = user, id) do
     from(gs in GameSession, where: gs.id == ^id)
     |> user_game_sessions_query(user)
-    |> Repo.one!()
+    |> Repo.one()
   end
 
   defp user_game_sessions_query(query, %Accounts.User{id: user_id}) do
@@ -115,7 +115,7 @@ defmodule BottleDungeon.Game do
       %Ecto.Changeset{source: %GameSession{}}
 
   """
-  def change_game_session(%GameSession{} = game_session) do
+  def change_game_session(%GameSession{} = game_session \\ %GameSession{}) do
     game_session
     |> GameSession.changeset(%{})
   end

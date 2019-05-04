@@ -45,6 +45,22 @@ defmodule BottleDungeonWeb.GameSessionControllerTest do
     end
   end
 
+  test "authorizes actions against access by other users", %{conn: conn} do
+    owner = user_fixture(username: "owner")
+    game_session = game_session_fixture(owner, @create_attrs)
+    non_owner = user_fixture(username: "sneaky")
+    conn = assign(conn, :current_user, non_owner)
+
+    Enum.each([
+      get(conn, Routes.game_session_path(conn, :show, game_session)),
+      get(conn, Routes.game_session_path(conn, :edit, game_session)),
+      put(conn, Routes.game_session_path(conn, :update, game_session, @create_attrs)),
+      delete(conn, Routes.game_session_path(conn, :delete, game_session))
+    ], fn result ->
+      assert result.status == 404
+    end)
+  end
+
   test "requires user authentication on all actions", %{conn: conn} do
     Enum.each([
       get(conn, Routes.game_session_path(conn, :new)),
