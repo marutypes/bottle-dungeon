@@ -120,6 +120,11 @@ defmodule BottleDungeon.Game do
     |> GameSession.changeset(%{})
   end
 
+  def count_game_sessions() do
+    from(p in "game_sessions", select: count(p.id))
+    |> Repo.one
+  end
+
   defp put_user(changeset, user) do
     Ecto.Changeset.put_assoc(changeset, :user, user)
   end

@@ -21,6 +21,9 @@ defmodule BottleDungeonWeb.ConnCase do
       use Phoenix.ConnTest
       alias BottleDungeonWeb.Router.Helpers, as: Routes
 
+      # Import app specific helpers
+      import BottleDungeon.TestHelpers
+
       # The default endpoint for testing
       @endpoint BottleDungeonWeb.Endpoint
     end
