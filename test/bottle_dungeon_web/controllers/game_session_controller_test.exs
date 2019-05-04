@@ -11,7 +11,7 @@ defmodule BottleDungeonWeb.GameSessionControllerTest do
     end
 
     @tag login_as: "mallen"
-    test "lists all user's videos on the index", %{conn: conn, user: user} do
+    test "lists all user's game sessions on the index", %{conn: conn, user: user} do
       user_game_session = game_session_fixture(user, title: "The Restless Season")
       other_user = user_fixture(username: "someone else")
       other_game_session = game_session_fixture(other_user, title: "Blades in the ARC")
