@@ -1,32 +1,33 @@
-<h1>My Campaigns</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
+<h1>My campaigns</h1>
+<div class="lg:flex">
+  <div class="flex-grow">
     <%= for campaign <- @campaigns do %>
-        <tr>
-          <td><%= campaign.title %></td>
-          <td>
-            <%= link "Play", to: Routes.play_path(@conn, :show, campaign) %>
-          </td>
-          <td>
-            <%= link "Details", to: Routes.campaign_path(@conn, :show, campaign) %>
-          </td>
-          <td>
-            <%= link "Edit", to: Routes.campaign_path(@conn, :edit, campaign) %>
-          </td>
-          <td>
-            <%= link "Delete", to: Routes.campaign_path(@conn, :delete, campaign), method: :delete, data: [confirm: "Are you sure?"] %>
-          </td>
-        </tr>
+      <ul class="list-reset">
+        <li>
+          <div class="max-w-md w-full mb-4">
+            <div class="border-r border-b border-l border-grey-light lg:border-t lg:border-grey-light bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+              <div class="mb-8">
+                <h3 class="text-black font-bold text-xl mb-2"><%= campaign.title %></h3>
+                <p class="text-grey-darker text-base"><%= campaign.description %></p>
+              </div>
+              <div class="flex lg:items-center justify-end">
+                <%= link "Play",
+                  to: Routes.play_path(@conn, :show, campaign),
+                  class: "button mr-1 lg:mr-2" %>
+                <%= link "Details",
+                  to: Routes.campaign_path(@conn, :show, campaign),
+                  class: "button mr-1 lg:mr-2" %>
+                <%= link "Delete",
+                  to: Routes.campaign_path(@conn, :delete, campaign), method: :delete, data: [confirm: "Are you sure?"],
+                  class: "button" %>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
     <% end %>
-  </tbody>
-</table>
-
-<span><%= link "New Game", to: Routes.campaign_path(@conn, :new) %></span>
+  </div>
+  <div>
+    <%= link "New Game", to: Routes.campaign_path(@conn, :new), class: "button button--primary w-full" %>
+  </div>
+</div>

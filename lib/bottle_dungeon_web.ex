@@ -40,6 +40,9 @@ defmodule BottleDungeonWeb do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
+      # Import SVGCache helper
+      import BottleDungeon.InlineSvgCache, only: [svg_image: 3, svg_image: 4]
+
       import BottleDungeonWeb.ErrorHelpers
       import BottleDungeonWeb.Gettext
       alias BottleDungeonWeb.Router.Helpers, as: Routes

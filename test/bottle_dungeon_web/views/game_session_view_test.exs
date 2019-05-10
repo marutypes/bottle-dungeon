@@ -17,7 +17,7 @@ defmodule BottleDungeonWeb.CampaignViewTest do
         campaigns: games
       )
 
-    assert String.contains?(content, "My Games")
+    assert String.contains?(content, "My campaigns")
 
     for game <- games do
       assert String.contains?(content, game.title)
@@ -34,6 +34,6 @@ defmodule BottleDungeonWeb.CampaignViewTest do
         changeset: changeset
       )
 
-    assert String.contains?(content, "New Game session")
+    assert String.contains?(content, "New campaign")
   end
 end

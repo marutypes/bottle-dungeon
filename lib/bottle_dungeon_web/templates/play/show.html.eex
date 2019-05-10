@@ -1,13 +1,15 @@
-<div class="row">
-  <div class="column">
-    <h1><%= @campaign.title %></h1>
+<div class="flex-grow flex flex-col">
+  <h1><%= @campaign.title %></h1>
 
-    <div>
-      <textarea id="msg-input" rows="3" placeholder="Comment..."></textarea>
+  <div class="msg-pane flex-grow">
+      An message
+  </div>
 
-      <button id="msg-submit" class="button column" type="submit">
-      Post
-      </button>
-    </div>
+  <div class="flex flex-none">
+    <textarea class="flex-grow" id="msg-input" rows="3" placeholder="Comment..."></textarea>
+
+    <button id="msg-submit" class="button button--primary" type="submit">
+    Post
+    </button>
   </div>
 </div>

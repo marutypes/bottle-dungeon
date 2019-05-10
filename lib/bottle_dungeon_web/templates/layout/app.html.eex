@@ -7,33 +7,58 @@
     <title>BottleDungeon · Phoenix Framework</title>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
   </head>
-  <body>
-    <header>
-      <section class="container">
-        <nav role="navigation">
-          <ul>
+  <body class="bg-grey-lightest h-screen flex flex-col">
+    <header class="bg-black p-6 shadow-lg">
+      <section class="container flex items-baseline justify-between flex-wrap">
+        <div class="flex items-center">
+          <%= svg_image(@conn, "lab", "icomoon", class: "p-1 fill-white") %>
+
+          <%= link "BottleDungeon",
+            to: Routes.page_path(@conn, :index),
+            class: "text-white no-underline text-xl tracking-extra-loose hover:text-grey sm:visible pt-2"
+          %>
+        </div>
+        <nav role="navigation" class="flex items-stretch pt-2">
+          <ul class="flex items-baseline list-reset text-sm flex-grow items-center">
             <%= if @current_user do %>
-              <li>
+              <li class="px-2">
                 <%= link "My Games",
-                    to: Routes.campaign_path(@conn, :index) %>
+                  to: Routes.campaign_path(@conn, :index),
+                  class: "nav__link"
+                %>
                 <%= link "Log out",
-                    to: Routes.session_path(@conn, :delete, @current_user),
-                    method: "delete" %>
+                  to: Routes.session_path(@conn, :delete, @current_user),
+                  method: "delete",
+                  class: "nav__link"
+                %>
               </li>
             <% else %>
-              <li><%= link "Log in", to: Routes.session_path(@conn, :new) %></li>
-              <li><%= link "Sign up", to: Routes.user_path(@conn, :new) %></li>
+              <li class="px-2">
+                <%= link "Log in",
+                  to: Routes.session_path(@conn, :new),
+                  class: "nav__link"
+                %>
+              </li>
+              <li class="px-2">
+                <%= link "Sign up",
+                  to: Routes.user_path(@conn, :new),
+                  class: "nav__link"
+                %>
+              </li>
             <% end %>
           </ul>
         </nav>
-        <%= link "Bottle|Dungeon", to: Routes.page_path(@conn, :index) %>
       </section>
     </header>
-    <main role="main" class="container">
+    <main role="main" class="flex flex-grow flex-col container">
+      <%= if get_flash(@conn, :error) do %>
+        <div class="banner--alert" role="alert">
+          <strong class="font-bold">Error</strong>
+          <span class="block sm:inline"><%= get_flash(@conn, :error) %></span>
+        </div>
+      <% end %>
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
       <%= render @view_module, @view_template, assigns %>
-
     </main>
     <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </body>

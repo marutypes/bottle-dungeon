@@ -11,8 +11,9 @@ defmodule BottleDungeon.Application do
       # Start the Ecto repository
       BottleDungeon.Repo,
       # Start the endpoint when the application starts
-      BottleDungeonWeb.Endpoint
+      BottleDungeonWeb.Endpoint,
       # Starts a worker by calling: BottleDungeon.Worker.start_link(arg)
+      BottleDungeon.InlineSvgCache
       # {BottleDungeon.Worker, arg},
     ]
 

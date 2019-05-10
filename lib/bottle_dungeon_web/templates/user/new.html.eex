@@ -1,24 +1,37 @@
-<h1>New User</h1>
-
 <%= form_for @changeset, Routes.user_path(@conn, :create), [autocomplete: "off"], fn f -> %>
-  <%= if @changeset.action do %>
-    <div class="alert alert-danger">
-      <p>Something went wrong. Please check the errors below.</p>
+  <div class="w-full max-w-xs container">
+    <h1 class="text-center sm:text-left">Signup</h1>
+    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <%= label f, :password,
+          class: "input" do %>
+        <span class="input__label-text">Username</span>
+        <%= text_input f, :username,
+          placeholder: "Bob",
+          class: "input__field" %>
+        <%= error_tag f, :username %>
+      <% end %>
+
+      <%= inputs_for f, :credential, fn cf -> %>
+        <%= label cf, :email,
+          class: "input" do %>
+          <span class="input__label-text">Email</span>
+          <%= email_input cf, :email,
+            placeholder: "Email",
+            class: "input__field" %>
+          <%= error_tag cf, :email %>
+        <% end %>
+
+        <%= label cf, :password,
+          class: "input" do %>
+          <span class="input__label-text">Password</span>
+          <%= password_input cf, :password,
+            placeholder: "Password",
+            class: "input__field" %>
+          <%= error_tag cf, :password %>
+        <% end %>
+      <% end %>
+
+      <%= submit "Create User", class: "button button--primary" %>
     </div>
-  <% end %>
-
-  <div>
-    <%= text_input f, :username, placeholder: "Username" %>
-    <%= error_tag f, :username %>
-
-    <%= inputs_for f, :credential, fn cf -> %>
-      <%= text_input cf, :email, placeholder: "Email" %>
-      <%= error_tag cf, :email %>
-
-      <%= password_input cf, :password, placeholder: "Password" %>
-      <%= error_tag cf, :password %>
-    <% end %>
   </div>
-
-  <%= submit "Create User" %>
 <% end %>

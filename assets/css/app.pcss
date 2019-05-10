@@ -1,0 +1,93 @@
+/* Tailwind utilities */
+@tailwind preflight;
+@tailwind components;
+@tailwind utilities;
+
+/* Typography.JS */
+@typography;
+
+/* BottleDungeon custom styles */
+@import 'utilities/svg.pcss';
+
+
+.container {
+  margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul.list-reset {
+  margin: 0;
+  padding: 0;
+
+  & > li {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.nav__link {
+  @apply text-grey-lighter no-underline tracking-tight p-2 text-sm;
+
+  &:hover {
+    @apply text-grey-dark;
+  }
+}
+
+.input__field {
+  @apply shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker mb-2 leading-tight;
+
+  &:focus {
+    @apply outline-none shadow-outline;
+  }
+}
+
+.input {
+  @apply block text-indigo-darker text-sm mb-2;
+}
+
+.input__label-text {
+  @apply block text-indigo-darker text-sm font-bold mb-2;
+}
+
+.banner--alert {
+  @apply bg-red-lightest border text-red-dark px-4 py-3 mt-6 rounded relative
+}
+
+.button {
+  @apply bg-transparent border border-indigo text-indigo py-1 px-2 rounded;
+
+  &:hover {
+    @apply text-indigo-dark border-indigo-dark;
+  }
+
+  &:focus {
+    @apply outline-none shadow-outline;
+  }
+}
+
+.button--plain {
+  @apply border-none;
+
+  &:hover {
+    @apply border-none;
+  }
+}
+
+.button--primary {
+  @apply bg-indigo text-white;
+
+  &:hover {
+    @apply bg-indigo-dark text-grey;
+  }
+}
+
+.page--title {
+  @apply text-center;
+}
+
+.help-block {
+  @apply text-red-light pb-2
+}

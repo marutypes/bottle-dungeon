@@ -1,4 +1,10 @@
-<section class="phx-hero">
+<section class="container">
   <h1><%= gettext "Welcome to %{name}!", name: "BottleDungeon" %></h1>
-  <p>Get ready to delve.</p>
+  <h2>Get ready to delve.</h2>
+
+  <p>
+  Culpa incididunt tempor commodo dolore veniam labore consectetur. Eu excepteur Lorem in consequat. Anim aliqua excepteur reprehenderit aliquip proident ut exercitation fugiat commodo adipisicing elit cillum.
+
+Voluptate ex fugiat enim consequat cillum ullamco id magna et labore elit in. Incididunt tempor veniam ullamco sint ad veniam aliqua sint est. Do in qui dolor irure do in sit excepteur et voluptate. Sit cupidatat voluptate in sit enim ad fugiat officia id qui consectetur. Duis dolor aliquip nulla in Lorem commodo esse Lorem consectetur. Dolore dolore commodo pariatur officia cupidatat mollit officia velit occaecat. Duis labore consequat incididunt eiusmod dolor consequat deserunt.
+  </p>
 </section>

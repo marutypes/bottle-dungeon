@@ -1,10 +1,35 @@
-<h1>Login</h1>
+
 <%= form_for @conn, Routes.session_path(@conn, :create), [as: :session], fn f -> %>
-  <div>
-    <%= text_input f, :email, placeholder: "Email" %>
+  <div class="w-full max-w-xs container">
+    <h1 class="text-center sm:text-left">Login</h1>
+      <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <div class="mb-4">
+          <%= label f, :password,
+            class: "input" do %>
+            <span class="input__label-text">Email</span>
+            <%= email_input f, :email,
+              placeholder: "adventurer@dungeon.com",
+              class: "input__field" %>
+            <%= error_tag f, :email %>
+          <% end %>
+        </div>
+        <div class="mb-4">
+          <%= label f, :password,
+            class: "input" do %>
+            <span class="input__label-text">Password</span>
+            <%= password_input f, :password,
+              placeholder: "********",
+              class: "input__field" %>
+            <%= error_tag f, :password %>
+          <% end %>
+        </div>
+      <%= submit "Log in", class: "button button--primary" %>
+    </div>
+    <p class="text-center text-grey-darker text-xs">
+      Need an account?
+      <%= link "Sign up",
+        to: Routes.user_path(@conn, :new),
+        class: "inline-block align-baseline font-bold text-sm text-indigo hover:text-indigo-darker no-underline hover:underline" %>
+    </p>
   </div>
-  <div>
-    <%= password_input f, :password, placeholder: "Password" %>
-  </div>
-  <%= submit "Log in" %>
 <% end %>

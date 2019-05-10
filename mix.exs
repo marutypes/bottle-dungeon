@@ -46,7 +46,8 @@ defmodule BottleDungeon.MixProject do
       {:comeonin, "~> 4.1"},
       {:pbkdf2_elixir, "~> 0.12"},
       {:earmark, "~> 1.3.2"},
-      {:phoenix_html_sanitizer, "~> 1.0.0"}
+      {:phoenix_html_sanitizer, "~> 1.0.0"},
+      {:phoenix_inline_svg, "~> 1.1"}
     ]
   end
 
