@@ -1,15 +1,12 @@
 <div class="flex-grow flex flex-col">
   <h1><%= @campaign.title %></h1>
-
-  <div class="msg-pane flex-grow">
-      An message
-  </div>
-
-  <div class="flex flex-none">
-    <textarea class="flex-grow" id="msg-input" rows="3" placeholder="Comment..."></textarea>
-
-    <button id="msg-submit" class="button button--primary" type="submit">
-    Post
-    </button>
-  </div>
+  <bottle-dungeon-app
+    token="<%= assigns[:user_token] %>"
+    campaign="<%= @campaign.id %>">
+  </bottle-dungeon-app>
 </div>
+
+<script
+  type="text/javascript"
+  src="<%= Routes.static_path(@conn, "/js/play.js") %>">
+</script>
